@@ -10,6 +10,12 @@ import { validate } from "./validate";
 // SPA
 import { Link } from "react-router-dom";
 
+// axios
+import axios from "axios";
+
+
+
+
 const Register = () => {
   const [data, setData] = useState({
     name: "",
@@ -21,10 +27,15 @@ const Register = () => {
   });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
+  const [posted, setPosted] = useState();
 
   useEffect(() => {
     setErrors(validate(data, "signup"));
   }, [data, touched]);
+
+  const post = () => {
+
+  }
 
   const changeHandler = (event) => {
     if (event.target.name === "isAccepted") {
@@ -41,9 +52,9 @@ const Register = () => {
   const submitHadler = (event) => {
     event.preventDefault();
     if (!Object.keys(errors).length) {
-      notify("You signed up successfully", "success");
+      notify("با موفقیت ثبت نام کردید", "success");
     } else {
-      notify("Invalid data", "error");
+      notify("اطلاعات را به درستی وارد کنید", "error");
       setTouched({
         name: true,
         lastName: true,
@@ -53,6 +64,21 @@ const Register = () => {
         isAccepted: true,
       });
     }
+    const user = {
+      name: data.name,
+      lastName: data.lastName,
+      email: data.email,
+      password: data.password,
+      isAccepted: data.isAccepted,
+    };
+    axios.post("https://www.getpostman.com/collections/e46fc049c14dd4626e45/sinaolfati",
+     { user })
+      .then(res => {
+        console.log("posting data", res);
+        console.log(res.data);
+        setPosted(true);
+      }).catch(err => console.log(err))
+
   };
 
   return (
@@ -140,7 +166,7 @@ const Register = () => {
         </div>
         <div className={styles.formButtons}>
           <Link to="/login">ورود</Link>
-          <button type="submit">ثبت نام</button>
+          {posted ? <Link to="/activate"><button type="submit">ثبت نام</button></Link> : <button type="submit">ثبت نام</button>}
         </div>
       </form>
       <ToastContainer />
