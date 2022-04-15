@@ -46,7 +46,7 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <form onSubmit={submitHadler} className={styles.formContainer}>
-        <h2 className={styles.header}>Login</h2>
+        <h2 className={styles.header}>ورود</h2>
         <div className={styles.formField}>
         <label>ایمیل</label>
           <input

@@ -33,10 +33,6 @@ const Register = () => {
     setErrors(validate(data, "signup"));
   }, [data, touched]);
 
-  const post = () => {
-
-  }
-
   const changeHandler = (event) => {
     if (event.target.name === "isAccepted") {
       setData({ ...data, [event.target.name]: event.target.checked });
@@ -70,8 +66,9 @@ const Register = () => {
       email: data.email,
       password: data.password,
       isAccepted: data.isAccepted,
+      activated: false,
     };
-    axios.post("https://www.getpostman.com/collections/e46fc049c14dd4626e45/sinaolfati",
+    axios.post("https://www.getpostman.com/collections/e46fc049c14dd4626e45",
      { user })
       .then(res => {
         console.log("posting data", res);
@@ -83,7 +80,7 @@ const Register = () => {
 
   return (
     <div className={styles.container}>
-      <form onSubmit={submitHadler} className={styles.formContainer}>
+      <form method="get" action="/activate" onSubmit={submitHadler} className={styles.formContainer} >
         <h2 className={styles.header}>ثبت نام</h2>
         <div className={styles.formField}>
           <label>نام</label>
@@ -166,7 +163,7 @@ const Register = () => {
         </div>
         <div className={styles.formButtons}>
           <Link to="/login">ورود</Link>
-          {posted ? <Link to="/activate"><button type="submit">ثبت نام</button></Link> : <button type="submit">ثبت نام</button>}
+          <button type="submit" >ثبت نام</button>
         </div>
       </form>
       <ToastContainer />

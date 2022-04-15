@@ -1,7 +1,7 @@
 export const validate = (data,type) => {
     const errors = {}
-
-
+    
+    
     if(!data.email) {
         errors.email = "ایمیل را وارد کنید"
     } else if(!/[a-z][a-z0-9_\.]{2,}@[a-z]{2,5}\.[a-z]{2,4}/i.test(data.email)){
@@ -36,13 +36,26 @@ export const validate = (data,type) => {
         }
 
           if(!data.confirmPassword) {
-        errors.confirmPassword = "تکرار رمز عبور را وارد کنید"
-        } else if(data.confirmPassword !== data.password){
-        errors.confirmPassword = "تکرار رمز عبور همخوانی ندارد"
-        } else {
-        delete errors.confirmPassword
-        } 
-    }
+              errors.confirmPassword = "تکرار رمز عبور را وارد کنید"
+            } else if(data.confirmPassword !== data.password){
+                errors.confirmPassword = "تکرار رمز عبور همخوانی ندارد"
+            } else {
+                delete errors.confirmPassword
+            } 
+        }
+        
+        if(type === "activate"){
+            if(!data.activate) {
+                errors.activate = "رمز فعال سازی را وارد کنید"
+            } else if(!/123456/i.test(data.activate)){
+                errors.activate = "رمز فعال سازی نامعتبر است"
+            } else {
+                delete errors.activate
+            } 
+        }
+        
+        
+
     
 
 
