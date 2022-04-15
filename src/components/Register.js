@@ -30,7 +30,7 @@ const Register = () => {
   const [posted, setPosted] = useState();
 
   useEffect(() => {
-    setErrors(validate(data, "signup"));
+    setErrors(validate(data, "register"));
   }, [data, touched]);
 
   const changeHandler = (event) => {

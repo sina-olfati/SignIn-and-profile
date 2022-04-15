@@ -5,10 +5,8 @@ import styles from "./Register.module.css";
 
 import { notify } from "./toast";
 
-import { validate } from "./validate";
-
 // Spa
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Activate = () => {
 
@@ -19,7 +17,13 @@ const Activate = () => {
     const [touched, setTouched] = useState({});
 
     useEffect(() => {
-        setErrors(validate(data, "activate"));
+            if(!data.activate) {
+                errors.activate = "رمز فعال سازی را وارد کنید"
+            } else if(data.activate !== "123456"){
+                errors.activate = "رمز فعال سازی نامعتبر است"
+            } else {
+                delete errors.activate
+            } 
       }, [data, touched]);
 
       const changeHandler = (event) => {
@@ -44,7 +48,7 @@ const Activate = () => {
 
   return (
     <div className={styles.container}>
-      <form method="get" action="/profile" onSubmit={submitHadler} className={styles.formContainer}>
+      <form method="" action="https://google.com" onSubmit={submitHadler} className={styles.formContainer}>
         <h2 className={styles.header}>فعال سازی حساب</h2>
         <div className={styles.formField}>
           <input
@@ -60,7 +64,7 @@ const Activate = () => {
 
         <div className={styles.formButtons}>
           <input type="submit" value="فعال سازی"/>
-          
+          {/* <button type="submit">ورود</button> */}
         </div>
       </form>
       <ToastContainer/> 
