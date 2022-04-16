@@ -24,10 +24,10 @@ const Register = () => {
     password: "",
     confirmPassword: "",
     isAccepted: false,
+    activated: false,
   });
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
-  const [posted, setPosted] = useState();
 
   useEffect(() => {
     setErrors(validate(data, "register"));
@@ -49,7 +49,29 @@ const Register = () => {
     event.preventDefault();
     if (!Object.keys(errors).length) {
       notify("با موفقیت ثبت نام کردید", "success");
-      // window.location.replace("/activate");
+      
+      
+      // const user = {
+      //   firstname: data.name,
+      //   lastName: data.lastName,
+      //   phone: data.email,
+      //   password: data.password,
+      //   isAccepted: data.isAccepted,
+      //   ok: false,
+      // };
+      axios.post("http://chl-api.rahkardigital.com/API/V1/User/register?password=&firstname=&lastname=&phone=",
+      {
+        password: data.password,
+        firstname: data.name,
+        lastName: data.lastName,
+        phone: data.email,
+      })
+      .then(res => {
+        console.log("posting data");
+        console.log(res.data);
+        window.location.replace("/activate");
+      }).catch(err => console.log(err))
+      
     } else {
       notify("اطلاعات را به درستی وارد کنید", "error");
       setTouched({
@@ -61,21 +83,6 @@ const Register = () => {
         isAccepted: true,
       });
     }
-    const user = {
-      name: data.name,
-      lastName: data.lastName,
-      email: data.email,
-      password: data.password,
-      isAccepted: data.isAccepted,
-      activated: false,
-    };
-    axios.post("https://www.getpostman.com/collections/e46fc049c14dd4626e45",
-     { user })
-      .then(res => {
-        console.log("posting data", res);
-        console.log(res.data);
-        setPosted(true);
-      }).catch(err => console.log(err))
 
   };
 

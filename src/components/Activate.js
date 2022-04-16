@@ -10,6 +10,9 @@ import { validate2 } from "./validate2";
 // Spa
 import { Link } from "react-router-dom";
 
+// axios
+import axios from "axios";
+
 const Activate = () => {
 
     const [data, setData] = useState({
@@ -21,7 +24,8 @@ const Activate = () => {
     useEffect(() => {
         setErrors(validate2(data, "activate"));
       }, [data, touched]);
-      const changeHandler = (event) => {
+
+    const changeHandler = (event) => {
         setData({ ...data, [event.target.name]: event.target.value });
     };
 
@@ -33,6 +37,15 @@ const Activate = () => {
         event.preventDefault();
         if (!Object.keys(errors).length) {
           notify("فعال سازی با موفقیت انجام شد", "success");
+          const user = {
+            activated: true,
+          };
+          axios.post("http://chl-api.rahkardigital.com/API/V1/User/register?password=&firstname=&lastname=&phone=",
+           { user })
+            .then(res => {
+              console.log("posting data", res);
+              console.log(res.data);
+            }).catch(err => console.log(err))
           window.location.replace("/profile");
         } else {
           notify("رمز فعال سازی اشتباه است", "error");
