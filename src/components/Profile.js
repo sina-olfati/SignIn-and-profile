@@ -3,6 +3,8 @@ import React from 'react'
 // images
 import menu from "../images/menu.svg"
 import camera from "../images/camera.svg"
+import cap from "../images/graduationCap.svg"
+import suitcase from "../images/suitcase.svg"
 
 // Spa
 import { Link } from "react-router-dom";
@@ -42,8 +44,22 @@ const Profile = () => {
             </div>
         </div>
       </header>
-      <section>
 
+      <section>
+        <h2>پروفایل خود را کامل کنید</h2>
+        <div className={styles.steps}>
+            <div className={styles.steps1}>
+                <img src={cap}/>
+                <p>تحصیلات</p>
+                <a href='#'>دو قدم مانده</a>
+            </div>
+            <div className={styles.steps2}>
+                <img src={suitcase}/>
+                <p>حرفه</p>
+                <a href='#'>چهار قدم مانده</a>
+            </div>
+        </div>
+        <a className={styles.buy}>نسخه پریمیوم را بخرید</a>
       </section>
     </div>
   )

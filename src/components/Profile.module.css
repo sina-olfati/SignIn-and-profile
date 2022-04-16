@@ -89,3 +89,80 @@ header{
 .details p{
     font-weight: bold;
 }
+
+/* section */
+
+section{
+    text-align: right;
+    background-color: #f9f9f9;
+    padding-bottom: 100px;
+}
+
+section h2{
+    margin-right: 20px;
+    color: rgb(70, 70, 70);
+}
+
+.steps{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.steps a {
+    color: rgb(100, 100, 100);
+    font-weight: bold;
+}
+
+.steps1{
+    background-color: rgb(82, 191, 228);
+    width: 100px;
+    height: 140px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+} 
+
+.steps2{
+    background-color: aquamarine;
+    width: 100px;
+    height: 140px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+} 
+
+.steps img{
+    width: 30px;
+    background-color: #dbdbdb;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.buy{
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(71, 71, 71);
+    padding: 10px;
+    position: relative;
+    top: 60px;
+    right: 10px;
+    border: dashed 1px silver;
+    border-radius: 10px;
+    display: inline-block;
+    width: 91vw;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.buy:hover{
+    background-color: white;
+    box-shadow: 0 0 5px 1px silver;
+}
