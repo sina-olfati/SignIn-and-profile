@@ -58,6 +58,7 @@ const Activate = () => {
         </div>
 
         <div className={styles.formButtons}>
+        <Link to="/register">بازگشت</Link>
           <button type="submit">ورود</button>
         </div>
       </form>
