@@ -33,6 +33,7 @@ const Activate = () => {
         event.preventDefault();
         if (!Object.keys(errors).length) {
           notify("فعال سازی با موفقیت انجام شد", "success");
+          window.location.replace("/profile");
         } else {
           notify("رمز فعال سازی اشتباه است", "error");
           setTouched({
@@ -43,7 +44,7 @@ const Activate = () => {
 
   return (
     <div className={styles.container}>
-      <form method="" action="/profile" onSubmit={submitHadler} className={styles.formContainer}>
+      <form onSubmit={submitHadler} className={styles.formContainer}>
         <h2 className={styles.header}>فعال سازی حساب</h2>
         <div className={styles.formField}>
           <input

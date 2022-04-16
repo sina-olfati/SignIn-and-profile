@@ -115,7 +115,7 @@ input[type="checkbox"]:focus{
 }
 
 .formButtons{
-    width: 50%;
+    width: 150px;
     display: flex;
     justify-content: space-between;
     align-items: center;

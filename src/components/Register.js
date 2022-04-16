@@ -49,6 +49,7 @@ const Register = () => {
     event.preventDefault();
     if (!Object.keys(errors).length) {
       notify("با موفقیت ثبت نام کردید", "success");
+      // window.location.replace("/activate");
     } else {
       notify("اطلاعات را به درستی وارد کنید", "error");
       setTouched({
@@ -80,7 +81,7 @@ const Register = () => {
 
   return (
     <div className={styles.container}>
-      <form method="get" action="/activate" onSubmit={submitHadler} className={styles.formContainer} >
+      <form onSubmit={submitHadler} className={styles.formContainer} >
         <h2 className={styles.header}>ثبت نام</h2>
         <div className={styles.formField}>
           <label>نام</label>

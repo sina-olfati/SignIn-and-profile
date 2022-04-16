@@ -34,6 +34,7 @@ const Login = () => {
     event.preventDefault();
     if (!Object.keys(errors).length) {
       notify("با موفقیت وارد شدید", "success");
+      window.location.replace("/activate");
     } else {
       notify("اطلاعات را به درستی وارد کنید", "error");
       setTouched({
