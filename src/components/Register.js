@@ -49,22 +49,12 @@ const Register = () => {
     event.preventDefault();
     if (!Object.keys(errors).length) {
       notify("با موفقیت ثبت نام کردید", "success");
-      
-      
-      // const user = {
-      //   firstname: data.name,
-      //   lastName: data.lastName,
-      //   phone: data.email,
-      //   password: data.password,
-      //   isAccepted: data.isAccepted,
-      //   ok: false,
-      // };
       axios.post("http://chl-api.rahkardigital.com/API/V1/User/register?password=&firstname=&lastname=&phone=",
       {
-        password: data.password,
-        firstname: data.name,
-        lastName: data.lastName,
-        phone: data.email,
+        "password": data.password,
+        "firstname": data.name,
+        "lastName": data.lastName,
+        "phone": data.email,
       })
       .then(res => {
         console.log("posting data");

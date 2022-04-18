@@ -61,6 +61,7 @@ const Activate = () => {
         <h2 className={styles.header}>فعال سازی حساب</h2>
         <div className={styles.formField}>
           <input
+            placeholder="123456"
             className={errors.activate && touched.activate ? styles.uncompleted : styles.formInput}
             type="text"
             name="activate"

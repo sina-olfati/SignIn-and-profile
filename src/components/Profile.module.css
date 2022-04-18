@@ -154,12 +154,10 @@ section h2{
     position: relative;
     top: 60px;
     right: 10px;
-    border: dashed 1px silver;
     border-radius: 10px;
     display: inline-block;
-    width: 91vw;
     text-align: center;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .buy:hover{
